@@ -1,4 +1,4 @@
-package day04_rpg;
+package rpg_game;
 
 import java.io.IOException;
 import java.util.Random;

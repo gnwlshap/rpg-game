@@ -1,4 +1,4 @@
-package day04_rpg;
+package rpg_game;
 
 public class Item {
 	static final int WEAPON = 1;

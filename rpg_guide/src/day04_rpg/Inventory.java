@@ -3,7 +3,7 @@ package day04_rpg;
 import java.util.ArrayList;
 
 public class Inventory {
-	ArrayList<Item> itemList = new ArrayList<>();
+	private ArrayList<Item> itemList = new ArrayList<>();
 
 	public void inventoryMenu() {
 		while (true) {
@@ -20,11 +20,21 @@ public class Inventory {
 			}
 		}
 	}
+	
+	public ArrayList<Item> getItemList() {
+		return (ArrayList<Item>) itemList.clone();
+	}
+	
+	public void clearItemList() {
+		itemList.clear();
+	}
 
 	public void equipMenu() {
 		Player.guild.printAllUnitStaus();
-		System.out.println("아이템 착용할 길드원을 선택하세요 ");
+		System.out.println("아이템 착용할 길드원을 선택하세요 [0.뒤로가기]");
 		int selUnit = MainGame.scan.nextInt();
+		if(selUnit == 0)
+			return;
 		while (true) {
 			Player.guild.printUnitStaus(selUnit - 1);
 			Player.guild.printUnitItem(selUnit - 1);
@@ -34,9 +44,9 @@ public class Inventory {
 			if (selEquip == 0)
 				break;
 			selEquip -= 1;
-			if (itemList.get(selEquip).kind == Item.WEAPON) {
-				if (Player.getGuildUnit(selUnit - 1).weapon != null) {
-					itemList.add(Player.getGuildUnit(selUnit - 1).weapon);
+			if (itemList.get(selEquip).getKind() == Item.WEAPON) {
+				if (Player.getGuildUnit(selUnit - 1).getWeapon() != null) {
+					itemList.add(Player.getGuildUnit(selUnit - 1).getWeapon());
 				}
 				Player.getGuildUnit(selUnit - 1).weapon = itemList.get(selEquip);
 			} else if (itemList.get(selEquip).kind == Item.ARMOR) {
@@ -71,6 +81,8 @@ public class Inventory {
 			System.out.println("[골드 : " + Player.money + "]");
 			System.out.println("판매할 아이템 번호를 입력하세요. (50 % 세금) [0.뒤로가기]");
 			int selSell = MainGame.scan.nextInt();
+			if(selSell == 0)
+				break;
 			System.out.println(itemList.get(selSell - 1).name + "을 판매합니다.");
 			try {
 				Thread.sleep(1000);

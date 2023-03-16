@@ -7,7 +7,7 @@ public class Player {
 	static Guild guild = new Guild();
 	static Inventory inven = new Inventory();
 
-	Player() {
+	public Player() {
 		money = 100000;
 		guild.setGuild();
 	}
@@ -20,12 +20,13 @@ public class Player {
 		inven.inventoryMenu();
 	}
 
-	static public ArrayList<Unit> getGuildList() {
-		return guild.guildList;
+	static public ArrayList<Unit> getUnitList() {
+		
+		return guild.getUnitList();
 	}
 
 	static public ArrayList<Item> getItemList() {
-		return inven.itemList;
+		return inven.getItemList();
 	}
 
 	static public Unit getGuildUnit(int num) {
@@ -33,10 +34,32 @@ public class Player {
 	}
 
 	static public int getGuildSize() {
-		return guild.guildList.size();
+		return guild.getUnitList().size();
 	}
-
+	
 	static public int getItemSize() {
-		return inven.itemList.size();
+		return inven.getItemList().size();
+	}
+	
+	public static int getMoney() {
+		return money;
+	}
+	
+	public void clearInven() {
+		inven.
+	}
+	
+	public static void setGuildUnitWeapon(int index, Item item) {
+		guild.setUnitWeapon(index, item);
+	}
+	public static void setGuildUnitArmor(int index, Item item) {
+		guild.setUnitArmor(index, item);
+	}
+	public static void setGuildUnitRing(int index, Item item) {
+		guild.setUnitRing(index, item);
+	}
+	
+	public static void setMoney(int money) {
+		Player.money = money;
 	}
 }

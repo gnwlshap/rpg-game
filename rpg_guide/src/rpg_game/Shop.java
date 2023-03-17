@@ -141,9 +141,17 @@ public class Shop {
 		for (int i = 0; i < itemList.size(); i++) {
 			if (itemList.get(i).getKind() != kind)
 				continue;
+			String power = "";
+			if(kind == Item.WEAPON)
+				power = "공격력";
+			else if(kind == Item.ARMOR)
+				power = "방어력";
+			else if(kind == Item.RING)
+				power = "체력";
+				
 			System.out.print("[" + (count + 1) + "번]");
 			System.out.print("[이름 : " + itemList.get(i).getName() + "]");
-			System.out.print("[능력 : " + itemList.get(i).getPower() + "]");
+			System.out.print("["+power+" : " + itemList.get(i).getPower() + "]");
 			System.out.print("[가격 : " + itemList.get(i).getPrice() + "]");
 			System.out.println("");
 			count += 1;

@@ -6,10 +6,12 @@ public class Player {
 	static int money;
 	static Guild guild = new Guild();
 	static Inventory inven = new Inventory();
+	static Unit playerUnit;
 
-	public Player() {
+	public Player(String name) {
 		money = 100000;
 		guild.setGuild();
+		playerUnit = new Unit(name, 5, 300, 10, 5, 0, true);
 	}
 
 	public void guildMenu() {
@@ -46,7 +48,7 @@ public class Player {
 	}
 	
 	public void clearInven() {
-		inven.
+		inven.clearItemList();
 	}
 	
 	public static void setGuildUnitWeapon(int index, Item item) {
